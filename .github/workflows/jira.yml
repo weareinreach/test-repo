@@ -19,5 +19,7 @@ jobs:
         with:
           project: IN
           summary: ${{ github.event.issue.title }}
-          description: ${{ github.event.issue.body }}
+          description: |
+            ${{ github.event.issue.html_url }}
+            ${{ github.event.issue.body }}
           issuetype: GitHub
