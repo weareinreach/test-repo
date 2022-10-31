@@ -14,12 +14,13 @@ jobs:
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      - name: Format Issue Body
+        id: formatIssue
+        uses: weareinreach/action-md2adf@main
       - name: Create Jira Issue
         uses: atlassian/gajira-create@master
         with:
           project: IN
           summary: ${{ github.event.issue.title }}
-          description: |
-            ${{ github.event.issue.html_url }}
-            ${{ github.event.issue.body }}
+          description: ${{steps.formatIssue.outputs.adf}}
           issuetype: GitHub
