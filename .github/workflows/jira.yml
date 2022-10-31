@@ -20,3 +20,4 @@ jobs:
           project: IN
           summary: ${{ github.event.issue.title }}
           description: ${{ github.event.issue.body }}
+          issuetype: GitHub
